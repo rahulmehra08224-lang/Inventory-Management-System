@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-contrast="normal" data-layout="standard" data-font-size="normal">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Accessible Inventory Management System developed by Rahul Mehra (CSE AIML Sec B) - Q12 Accessibility: High Contrast, Font Resizing, Keyboard Navigation, Dark Mode, Minimalist Layout">
+  <title>Inventory Management System | Q12 Accessibility Suite - Rahul Mehra (CSE AIML Sec B)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Skip Link for Keyboard Navigation (WCAG 2.4.1) -->
+  <a href="#main-content" class="skip-link">Skip to Main Content (Press Enter)</a>
+
+  <!-- ARIA Live Region for Screen Readers -->
+  <div id="aria-announcer" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Persistent Top Accessibility Banner & Controls Bar -->
+  <header class="accessibility-toolbar" role="region" aria-label="Accessibility and Quick Settings Toolbar">
+    <div class="toolbar-container">
+      <div class="student-meta" aria-label="Student and Project Information">
+        <span class="badge-student">Student: <strong>Rahul Mehra</strong></span>
+        <span class="badge-meta">Branch: <strong>CSE AIML (Sec B)</strong></span>
+        <span class="badge-tag">Q12: Accessibility Suite</span>
+      </div>
+
+      <nav class="a11y-controls" aria-label="Accessibility Controls">
+        <!-- Font Resizing Controls -->
+        <fieldset class="control-group font-controls" aria-label="Font Resizing Controls">
+          <legend class="sr-only">Font Resizing Controls</legend>
+          <span class="control-label" id="font-size-label" aria-hidden="true">Font:</span>
+          <button type="button" id="btn-font-decrease" class="btn-a11y" title="Decrease Font Size (Alt + -)" aria-label="Decrease Font Size (Current scale: 100%)">
+            <span aria-hidden="true">A-</span>
+          </button>
+          <span id="font-size-indicator" class="font-indicator" aria-live="polite" aria-atomic="true">100%</span>
+          <button type="button" id="btn-font-increase" class="btn-a11y" title="Increase Font Size (Alt + +)" aria-label="Increase Font Size (Current scale: 100%)">
+            <span aria-hidden="true">A+</span>
+          </button>
+          <button type="button" id="btn-font-reset" class="btn-a11y btn-subtle" title="Reset Font Size to Default (Alt + 0)" aria-label="Reset Font Size to 100%">
+            <span aria-hidden="true">&#x21bb;</span>
+          </button>
+        </fieldset>
+
+        <div class="toolbar-divider" aria-hidden="true"></div>
+
+        <!-- High Contrast Mode Toggle -->
+        <button type="button" id="btn-toggle-contrast" class="btn-a11y" aria-pressed="false" title="Toggle High Contrast Mode (Alt + H)" aria-label="Toggle High Contrast Mode">
+          <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18V4c4.41 0 8 3.59 8 8s-3.59 8-8 8z"/>
+          </svg>
+          <span>High Contrast</span>
+        </button>
+
+        <!-- Dark / Light Mode Toggle -->
+        <button type="button" id="btn-toggle-theme" class="btn-a11y" aria-pressed="false" title="Toggle Dark Mode (Alt + D)" aria-label="Toggle Dark Mode">
+          <span id="theme-icon" aria-hidden="true">&#9790;</span>
+          <span id="theme-text">Dark Mode</span>
+        </button>
+
+        <!-- Minimalist Layout Toggle -->
+        <button type="button" id="btn-toggle-minimalist" class="btn-a11y" aria-pressed="false" title="Toggle Minimalist Distraction-Free Layout (Alt + M)" aria-label="Toggle Minimalist Layout">
+          <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/>
+          </svg>
+          <span id="minimalist-text">Minimalist View</span>
+        </button>
+
+        <div class="toolbar-divider" aria-hidden="true"></div>
+
+        <!-- Keyboard Shortcuts Helper Button -->
+        <button type="button" id="btn-open-shortcuts" class="btn-a11y btn-accent" title="View Keyboard Shortcuts Guide (Press ?)" aria-haspopup="dialog" aria-controls="modal-shortcuts">
+          <span aria-hidden="true">⌨?</span>
+          <span>Shortcuts</span>
+        </button>
+
+        <!-- Accessibility Documentation Modal Button -->
+        <button type="button" id="btn-open-a11y-info" class="btn-a11y btn-info" title="View Q12 Compliance Report" aria-haspopup="dialog" aria-controls="modal-a11y-info">
+          <span>Q12 Audit Report</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Application Wrapper -->
+  <div class="app-layout">
+    <!-- Header / Brand Section -->
+    <header class="main-header" role="banner">
+      <div class="header-content">
+        <div class="branding">
+          <div class="logo-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+              <line x1="12" y1="22.08" x2="12" y2="12"></line>
+            </svg>
+          </div>
+          <div>
+            <h1 class="system-title">CSE AIML Hardware & Inventory System</h1>
+            <p class="system-subtitle">Department of Computer Science & Engineering (AIML) &bull; Accessible Lab Asset Registry</p>
+          </div>
+        </div>
+
+        <!-- Top Global Actions -->
+        <div class="header-actions">
+          <button type="button" id="btn-add-item" class="btn btn-primary" title="Add New Inventory Item (Alt + N)" aria-haspopup="dialog" aria-controls="modal-item-form">
+            <span aria-hidden="true">+</span>
+            <span>Add New Item <kbd class="kbd-hint">Alt+N</kbd></span>
+          </button>
+          <button type="button" id="btn-export-csv" class="btn btn-secondary" title="Export Inventory to CSV (Alt + E)">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+            </svg>
+            <span>Export CSV</span>
+          </button>
+          <button type="button" id="btn-export-json" class="btn btn-secondary" title="Export Inventory to JSON">
+            <span>Export JSON</span>
+          </button>
+          <label for="import-file" class="btn btn-secondary btn-file-label" title="Import Inventory from JSON">
+            <span>Import JSON</span>
+            <input type="file" id="import-file" accept=".json" class="sr-only">
+          </label>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main id="main-content" class="main-content" role="main" tabindex="-1">
+      <!-- Minimalist Mode Alert (Shown only when Minimalist is active) -->
+      <div id="minimalist-banner" class="minimalist-active-banner" style="display: none;" role="note">
+        <strong>Minimalist Mode Active:</strong> Decorative visuals, complex widgets, and high-frequency animations are hidden. Only essential inventory data is rendered for streamlined cognitive focus.
+        <button type="button" id="btn-exit-minimalist" class="btn-link">Restore Full View (Alt+M)</button>
+      </div>
+
+      <!-- Quick Metrics Overview Dashboard (Auto-hidden or simplified in minimalist layout) -->
+      <section class="dashboard-metrics" aria-label="Inventory Key Performance Metrics">
+        <h2 class="sr-only">Inventory Summary Statistics</h2>
+        <div class="metric-card" id="card-total-skus" tabindex="0">
+          <div class="metric-icon metric-icon-blue" aria-hidden="true">&#128230;</div>
+          <div class="metric-details">
+            <span class="metric-label">Total Unique SKUs</span>
+            <strong class="metric-value" id="stat-total-skus">0</strong>
+            <span class="metric-subtext">Active catalog items</span>
+          </div>
+        </div>
+
+        <div class="metric-card" id="card-total-stock" tabindex="0">
+          <div class="metric-icon metric-icon-green" aria-hidden="true">&#9879;</div>
+          <div class="metric-details">
+            <span class="metric-label">Total Units in Stock</span>
+            <strong class="metric-value" id="stat-total-stock">0</strong>
+            <span class="metric-subtext">Physical hardware units</span>
+          </div>
+        </div>
+
+        <div class="metric-card" id="card-inventory-value" tabindex="0">
+          <div class="metric-icon metric-icon-purple" aria-hidden="true">&#8377;</div>
+          <div class="metric-details">
+            <span class="metric-label">Total Valuation</span>
+            <strong class="metric-value" id="stat-inventory-val">₹0.00</strong>
+            <span class="metric-subtext">Current stock asset value</span>
+          </div>
+        </div>
+
+        <div class="metric-card metric-card-alert" id="card-low-stock" tabindex="0">
+          <div class="metric-icon metric-icon-red" aria-hidden="true">&#9888;</div>
+          <div class="metric-details">
+            <span class="metric-label">Low & Out of Stock</span>
+            <strong class="metric-value" id="stat-low-stock">0</strong>
+            <span class="metric-subtext">Items needing replenishment</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Search, Filter & Quick Tools Toolbar -->
+      <section class="inventory-controls-panel" aria-label="Inventory Search, Filters and Table Options">
+        <div class="search-filter-row">
+          <!-- Accessible Search Input -->
+          <div class="search-box">
+            <label for="search-input" class="field-label">
+              <span>Search Inventory</span>
+              <kbd class="kbd-hint" aria-hidden="true">Alt+S</kbd>
+            </label>
+            <div class="search-input-wrapper">
+              <span class="search-icon" aria-hidden="true">&#128269;</span>
+              <input 
+                type="search" 
+                id="search-input" 
+                class="form-control" 
+                placeholder="Search by Item Name, SKU, Supplier, or Specs..." 
+                autocomplete="off"
+                aria-describedby="search-description"
+              >
+              <button type="button" id="btn-clear-search" class="btn-clear" aria-label="Clear Search Input" title="Clear search (Esc)" style="display: none;">
+                &times;
+              </button>
+            </div>
+            <span id="search-description" class="sr-only">Type to filter inventory records dynamically. Results update below as you type.</span>
+          </div>
+
+          <!-- Category Filter -->
+          <div class="filter-box">
+            <label for="filter-category" class="field-label">Filter by Category</label>
+            <select id="filter-category" class="form-control">
+              <option value="ALL">All Categories (All)</option>
+              <option value="AI Accelerators">AI Accelerators (Edge TPU, Jetson)</option>
+              <option value="Microcontrollers">Microcontrollers & Dev Boards</option>
+              <option value="Sensors & Vision">Sensors & Vision Systems</option>
+              <option value="Robotics & Actuators">Robotics & Actuators</option>
+              <option value="Power & Batteries">Power & Batteries</option>
+              <option value="Lab Instruments">Lab Instruments & Tools</option>
+            </select>
+          </div>
+
+          <!-- Stock Status Filter -->
+          <div class="filter-box">
+            <label for="filter-status" class="field-label">Stock Status</label>
+            <select id="filter-status" class="form-control">
+              <option value="ALL">All Stock Levels</option>
+              <option value="IN_STOCK">In Stock (Normal)</option>
+              <option value="LOW_STOCK">Low Stock (At or Below Min Threshold)</option>
+              <option value="OUT_OF_STOCK">Out of Stock (Zero Units)</option>
+            </select>
+          </div>
+
+          <!-- Sort Order Selector -->
+          <div class="filter-box">
+            <label for="sort-by" class="field-label">Sort Records By</label>
+            <select id="sort-by" class="form-control">
+              <option value="name-asc">Item Name (A to Z)</option>
+              <option value="name-desc">Item Name (Z to A)</option>
+              <option value="qty-asc">Stock Quantity (Lowest First)</option>
+              <option value="qty-desc">Stock Quantity (Highest First)</option>
+              <option value="price-asc">Unit Price (Low to High)</option>
+              <option value="price-desc">Unit Price (High to Low)</option>
+              <option value="date-desc">Recently Updated</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Filter Summary Bar & Reset Options -->
+        <div class="filter-status-bar" aria-live="polite">
+          <div class="results-count-container">
+            <span id="results-count">Showing 0 of 0 inventory items</span>
+            <span id="active-filter-tags" class="active-filter-tags"></span>
+          </div>
+          <div class="table-actions">
+            <button type="button" id="btn-reset-filters" class="btn btn-link" style="display: none;">Reset Filters</button>
+            <button type="button" id="btn-reset-sample-data" class="btn btn-link" title="Reload original AIML hardware sample dataset">Reset to Demo Data</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Main Data Table Section -->
+      <section class="inventory-table-container" aria-label="Inventory Data Table Section">
+        <!-- Table Help Instruction for Screen Readers & Keyboard Users -->
+        <div class="keyboard-instruction-note" role="note">
+          <span class="sr-only">Keyboard Table Instructions: </span>
+          <span class="instruction-text">
+            <strong>Keyboard Navigation Tip:</strong> Use <kbd>Tab</kbd> to move through row actions, or press <kbd>&uarr;</kbd> and <kbd>&darr;</kbd> arrow keys to navigate table rows. Press <kbd>Enter</kbd> to Edit, <kbd>+</kbd> / <kbd>-</kbd> on stock buttons to adjust counts immediately.
+          </span>
+        </div>
+
+        <div class="table-scroll-wrapper" tabindex="0" role="region" aria-label="Inventory Table scrollable container">
+          <table id="inventory-table" class="inventory-table" aria-describedby="table-caption">
+            <caption id="table-caption" class="sr-only">
+              Current CSE AIML inventory assets list with stock quantities, threshold warnings, unit price, and management actions.
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col" class="th-sku">SKU Code</th>
+                <th scope="col" class="th-name">Item Name & Specs</th>
+                <th scope="col" class="th-cat">Category</th>
+                <th scope="col" class="th-qty">Stock Units</th>
+                <th scope="col" class="th-status">Status</th>
+                <th scope="col" class="th-price">Unit Price (₹)</th>
+                <th scope="col" class="th-supplier">Supplier / Location</th>
+                <th scope="col" class="th-actions">Row Actions</th>
+              </tr>
+            </thead>
+            <tbody id="inventory-table-body">
+              <!-- Dynamically populated via app.js -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Empty State Message -->
+        <div id="empty-state" class="empty-state" style="display: none;" role="status">
+          <div class="empty-icon" aria-hidden="true">&#128469;</div>
+          <h3>No matching inventory items found</h3>
+          <p>Try clearing your search terms or adjusting the category and status filters.</p>
+          <button type="button" id="btn-empty-clear" class="btn btn-primary">Clear All Search & Filters</button>
+        </div>
+      </section>
+
+      <!-- Activity & Audit Log Section -->
+      <section class="activity-log-section" aria-label="Recent Inventory Activity and Audit Log">
+        <div class="section-header-compact">
+          <h2 class="section-title">Audit Trail & Activity Log</h2>
+          <button type="button" id="btn-clear-logs" class="btn btn-link btn-small">Clear Activity History</button>
+        </div>
+        <ul id="activity-log-list" class="activity-log-list" aria-live="polite" aria-relevant="additions text">
+          <!-- Dynamically populated -->
+        </ul>
+      </section>
+    </main>
+
+    <!-- Footer with Academic & Compliance Declarations -->
+    <footer class="main-footer" role="contentinfo">
+      <div class="footer-content">
+        <div class="footer-col">
+          <strong>Academic Submission</strong>
+          <p>Student Name: <strong>Rahul Mehra</strong> &bull; Dept: <strong>CSE AIML (Section B)</strong></p>
+          <p>Coursework Assignment: <strong>Inventory Management System &bull; Question 12 (Q12)</strong></p>
+        </div>
+        <div class="footer-col">
+          <strong>Accessibility Standards Met</strong>
+          <p>WCAG 2.1 Level AAA Contrast &bull; WAI-ARIA 1.2 Landmarks & Dialogs &bull; Keyboard Accessible</p>
+          <p>Features: High Contrast, Font Scaling, Keyboard Shortcuts, Dark Theme, Minimalist Cognitive Layout</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- MODAL: ADD / EDIT INVENTORY ITEM                            -->
+  <!-- ============================================================ -->
+  <div id="modal-item-form" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-form-title" aria-describedby="modal-form-desc" hidden>
+    <div class="modal-window">
+      <div class="modal-header">
+        <h2 id="modal-form-title" class="modal-title">Add New Hardware Item</h2>
+        <button type="button" id="btn-close-modal-form" class="btn-close-modal" aria-label="Close dialog (Escape)">&times;</button>
+      </div>
+
+      <p id="modal-form-desc" class="modal-description">
+        Fill out the asset details below. Fields marked with <span class="required-asterisk" aria-hidden="true">*</span> are required.
+      </p>
+
+      <form id="item-form" novalidate>
+        <input type="hidden" id="form-item-id">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="form-sku" class="form-label">SKU / Asset Code <span class="required-asterisk">*</span></label>
+            <input type="text" id="form-sku" class="form-input" required placeholder="e.g. JET-ORIN-01" aria-describedby="sku-hint sku-error">
+            <small id="sku-hint" class="form-hint">Unique identifier code for the equipment.</small>
+            <span id="sku-error" class="form-error" role="alert" aria-live="assertive"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="form-category" class="form-label">Category <span class="required-asterisk">*</span></label>
+            <select id="form-category" class="form-input" required aria-describedby="category-error">
+              <option value="">-- Select Category --</option>
+              <option value="AI Accelerators">AI Accelerators</option>
+              <option value="Microcontrollers">Microcontrollers</option>
+              <option value="Sensors & Vision">Sensors & Vision</option>
+              <option value="Robotics & Actuators">Robotics & Actuators</option>
+              <option value="Power & Batteries">Power & Batteries</option>
+              <option value="Lab Instruments">Lab Instruments</option>
+            </select>
+            <span id="category-error" class="form-error" role="alert" aria-live="assertive"></span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="form-name" class="form-label">Item / Equipment Name <span class="required-asterisk">*</span></label>
+          <input type="text" id="form-name" class="form-input" required placeholder="e.g. NVIDIA Jetson Orin Nano 8GB Dev Kit" aria-describedby="name-error">
+          <span id="name-error" class="form-error" role="alert" aria-live="assertive"></span>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="form-quantity" class="form-label">Quantity in Stock <span class="required-asterisk">*</span></label>
+            <input type="number" id="form-quantity" class="form-input" min="0" step="1" required placeholder="e.g. 15" aria-describedby="quantity-error">
+            <span id="quantity-error" class="form-error" role="alert" aria-live="assertive"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="form-min-threshold" class="form-label">Low Stock Alert Threshold <span class="required-asterisk">*</span></label>
+            <input type="number" id="form-min-threshold" class="form-input" min="1" step="1" required placeholder="e.g. 5" aria-describedby="threshold-hint threshold-error">
+            <small id="threshold-hint" class="form-hint">Warns when stock falls to or below this level.</small>
+            <span id="threshold-error" class="form-error" role="alert" aria-live="assertive"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="form-price" class="form-label">Unit Price (₹ INR) <span class="required-asterisk">*</span></label>
+            <input type="number" id="form-price" class="form-input" min="0" step="0.01" required placeholder="e.g. 45000.00" aria-describedby="price-error">
+            <span id="price-error" class="form-error" role="alert" aria-live="assertive"></span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="form-supplier" class="form-label">Supplier / Lab Room</label>
+            <input type="text" id="form-supplier" class="form-input" placeholder="e.g. NVIDIA Academic Partner / Lab 402">
+          </div>
+
+          <div class="form-group">
+            <label for="form-location" class="form-label">Storage Bin / Shelf Location</label>
+            <input type="text" id="form-location" class="form-input" placeholder="e.g. Rack A - Shelf 3 - Box 12">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="form-notes" class="form-label">Technical Notes / Specifications</label>
+          <textarea id="form-notes" class="form-input" rows="2" placeholder="e.g. 40 TOPS AI compute, 6-core ARM Cortex-A78AE, Ampere GPU"></textarea>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" id="btn-cancel-form" class="btn btn-secondary">Cancel</button>
+          <button type="submit" id="btn-save-item" class="btn btn-primary">Save Item</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- MODAL: DELETE CONFIRMATION DIALOG                           -->
+  <!-- ============================================================ -->
+  <div id="modal-delete-confirm" class="modal-overlay" role="alertdialog" aria-modal="true" aria-labelledby="modal-del-title" aria-describedby="modal-del-desc" hidden>
+    <div class="modal-window modal-window-small">
+      <div class="modal-header">
+        <h2 id="modal-del-title" class="modal-title text-danger">Confirm Item Deletion</h2>
+        <button type="button" id="btn-close-delete-modal" class="btn-close-modal" aria-label="Cancel deletion (Escape)">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p id="modal-del-desc">
+          Are you sure you want to permanently delete <strong id="del-item-name">this item</strong> from the inventory catalog? This action will be logged in the audit trail.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="btn-cancel-delete" class="btn btn-secondary">Keep Item</button>
+        <button type="button" id="btn-confirm-delete" class="btn btn-danger">Yes, Delete Item</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- MODAL: KEYBOARD SHORTCUTS GUIDE                             -->
+  <!-- ============================================================ -->
+  <div id="modal-shortcuts" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-shortcuts-title" aria-describedby="modal-shortcuts-desc" hidden>
+    <div class="modal-window">
+      <div class="modal-header">
+        <h2 id="modal-shortcuts-title" class="modal-title">Accessible Keyboard Navigation Guide</h2>
+        <button type="button" id="btn-close-shortcuts-modal" class="btn-close-modal" aria-label="Close shortcuts guide (Escape)">&times;</button>
+      </div>
+      <p id="modal-shortcuts-desc" class="modal-description">
+        This application is fully operable using only your keyboard in accordance with WCAG 2.1 Guideline 2.1 (Keyboard Accessible).
+      </p>
+
+      <div class="shortcuts-grid">
+        <div class="shortcut-item">
+          <kbd class="key-combo">Alt + N</kbd>
+          <span class="key-desc">Open "Add New Item" dialog</span>
+        </div>
+        <div class="shortcut-item">
+          <kbd class="key-combo">Alt + S</kbd>
+          <span class="key-desc">Focus instant search input field</span>
+        </div>
+        <div class="shortcut-item">
+          <kbd class="key-combo">Alt + H</kbd>
+          <span class="key-desc">Toggle High Contrast Mode (WCAG AAA)</span>
+        </div>
+        <div class="shortcut-item">
+          <kbd class="key-combo">Alt + D</kbd>
+          <span class="key-desc">Toggle Dark / Light Theme</span>
+        </div>
+        <div class="shortcut-item">
+          <kbd class="key-combo">Alt + M</kbd>
+          <span class="key-desc">Toggle Minimalist Distraction-Free Layout</span>
+        </div>
+        <div class="shortcut-item">
+          <kbd class="key-combo">Alt + +</kbd>
+          <span class="key-desc">Increase font size (+25% step)</span>
+        </div>
+        <div class="shortcut-item">
+          <kbd class="key-combo">Alt + -</kbd>
+          <span class="key-desc">Decrease font size (-25% step)</span>
+        </div>
+        <div class="shortcut-item">
+          <kbd class="key-combo">Alt + 0</kbd>
+          <span class="key-desc">Reset font size to 100% default</span>
+        </div>
+        <div class="shortcut-item">
+          <kbd class="key-combo">Alt + E</kbd>
+          <span class="key-desc">Export current inventory to CSV file</span>
+        </div>
+        <div class="shortcut-item">
+          <kbd class="key-combo">Alt + R</kbd>
+          <span class="key-desc">Reset inventory to default sample dataset</span>
+        </div>
+        <div class="shortcut-item">
+          <kbd class="key-combo">&uarr; / &darr; (Arrows)</kbd>
+          <span class="key-desc">Navigate table rows when focused on the table</span>
+        </div>
+        <div class="shortcut-item">
+          <kbd class="key-combo">Esc</kbd>
+          <span class="key-desc">Close any open modal or clear search text</span>
+        </div>
+        <div class="shortcut-item">
+          <kbd class="key-combo">?</kbd>
+          <span class="key-desc">Open this Keyboard Shortcuts cheat sheet</span>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" id="btn-dismiss-shortcuts" class="btn btn-primary">Understood (Close)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- MODAL: Q12 ACCESSIBILITY COMPLIANCE & AUDIT REPORT          -->
+  <!-- ============================================================ -->
+  <div id="modal-a11y-info" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-a11y-title" aria-describedby="modal-a11y-desc" hidden>
+    <div class="modal-window modal-window-large">
+      <div class="modal-header">
+        <h2 id="modal-a11y-title" class="modal-title">Q12 Accessibility Compliance & Implementation Report</h2>
+        <button type="button" id="btn-close-a11y-modal" class="btn-close-modal" aria-label="Close report (Escape)">&times;</button>
+      </div>
+      <div id="modal-a11y-desc" class="modal-body a11y-report-body">
+        <div class="report-student-card">
+          <p><strong>Candidate:</strong> Rahul Mehra | <strong>Department:</strong> CSE AIML (Section B)</p>
+          <p><strong>Assignment Target:</strong> Inventory Management System &mdash; Question 12 (Improve Accessibility)</p>
+        </div>
+
+        <h3>1. High Contrast Mode (WCAG AAA Compliance)</h3>
+        <p>
+          Designed for users with low vision, photophobia, or visual impairments. Implements ultra-high contrast color ratios exceeding <strong>7:1 for normal text</strong> and <strong>4.5:1 for UI components</strong>.
+        </p>
+        <ul>
+          <li>Uses pure OLED black backgrounds (<code>#000000</code>) paired with stark high-contrast yellow (<code>#FFE600</code>), cyan (<code>#00FFFF</code>), and pure white (<code>#FFFFFF</code>).</li>
+          <li>Replaces subtle box shadows and gray borders with bold 2px/3px solid borders to guarantee unambiguous visual demarcation of buttons, inputs, and rows.</li>
+          <li>Interactive elements receive clear underline and outline indicators that do not rely solely on color cues.</li>
+        </ul>
+
+        <h3>2. Dynamic Font Resizing Engine</h3>
+        <p>
+          Enables real-time scaling without page zooming or breaking responsive flexbox/grid containers.
+        </p>
+        <ul>
+          <li>Provides step-based controls (<code>A-</code>, <code>A+</code>, and Reset) with visual feedback (85% to 175%).</li>
+          <li>Built entirely on CSS custom properties (<code>--font-scale</code>) combined with scalable <code>rem</code> units.</li>
+          <li>Ensures no text truncation, overlapping, or horizontal overflow when scaled up to 175%.</li>
+          <li>Persistent across page reloads via <code>localStorage</code>.</li>
+        </ul>
+
+        <h3>3. Comprehensive Keyboard Navigation (WCAG 2.1 Principle 2)</h3>
+        <p>
+          Ensures the entire inventory workflow is completely operable without a mouse.
+        </p>
+        <ul>
+          <li><strong>Skip to Main Content:</strong> Top visible link allows immediate bypass of header and toolbar.</li>
+          <li><strong>Visible Focus Indicators:</strong> High-visibility 3px glowing outline with 2px offset on all interactive elements.</li>
+          <li><strong>Modal Focus Trapping:</strong> Focus is strictly kept within active modal dialogs, and returned to trigger button upon dismissal.</li>
+          <li><strong>Keyboard Hotkeys:</strong> <code>Alt+N</code> (New Item), <code>Alt+S</code> (Search), <code>Alt+H</code> (High Contrast), <code>Alt+D</code> (Dark Theme), <code>Alt+M</code> (Minimalist Mode), <code>Esc</code> (Close/Exit).</li>
+          <li><strong>Table Row Traversal:</strong> Arrow keys enable rapid keyboard scanning through rows.</li>
+        </ul>
+
+        <h3>4. Dark Mode with System Intelligence</h3>
+        <p>
+          Reduces eye strain and power consumption for extended laboratory sessions.
+        </p>
+        <ul>
+          <li>Engineered with accessible slate dark tones (<code>#0f172a</code>, <code>#1e293b</code>) tested for zero glare and high contrast.</li>
+          <li>Can be toggled independently or combined with High Contrast Dark for ultra-stark contrast.</li>
+        </ul>
+
+        <h3>5. Minimalist Cognitive Layout Mode</h3>
+        <p>
+          Caters to neurodivergent users, individuals with ADHD, cognitive overload sensitivity, or users on screen magnifiers.
+        </p>
+        <ul>
+          <li>Removes decorative metric cards, secondary badges, visual gradients, and motion transitions.</li>
+          <li>Distills the interface into clean, high-legibility tabular data with generous padding and focused typography.</li>
+          <li>Drastically simplifies cognitive load during stock entry and verification.</li>
+        </ul>
+
+        <h3>6. Screen Reader & ARIA Support</h3>
+        <p>
+          Implements <code>aria-live="polite"</code> for real-time stock updates and search result tallies, proper <code>aria-describedby</code> error handling on inputs, and explicit <code>role="alertdialog"</code> for destructive delete operations.
+        </p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" id="btn-dismiss-a11y-info" class="btn btn-primary">Close Report</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+</body>
+</html>

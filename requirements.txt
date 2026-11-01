@@ -1,0 +1,17 @@
+# ==============================================================================
+# BBAT104: FUNDAMENTALS OF TOTAL QUALITY MANAGEMENT (TQM) - PROJECT DEPENDENCIES
+# STUDENT NAME : RAHUL MEHRA
+# DEPARTMENT   : CSE, AIML SECB
+# ACADEMIC YEAR: 2026-27
+# BASELINE SYS : INVENTORY MANAGEMENT SYSTEM (DIGIT 3)
+# QUALITY GOAL : Q12: IMPROVE ACCESSIBILITY
+# ==============================================================================
+
+# Core Standard Libraries (Pre-installed with standard Python 3.x on Windows):
+# - tkinter (GUI Presentation Layer)
+# - sqlite3 (Relational Database Persistence)
+# - unittest (Automated Unit Testing Suite)
+# - json, csv, math, os, sys, datetime
+
+# Statistical Quality Control (SQC) Charting:
+matplotlib>=3.5.0

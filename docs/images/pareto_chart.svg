@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 450" width="750" height="450">
+      <rect width="100%" height="100%" fill="#ffffff" rx="8"/>
+      <text x="375.0" y="30" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#0f172a" text-anchor="middle">
+        Pareto Analysis of Inventory & Accessibility Defects (80/20 Rule)
+      </text>
+      <text x="375.0" y="45" font-family="Segoe UI, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">
+        BBAT104 TQM Coursework • Student: Rahul Mehra (CSE AIML Sec B)
+      </text>
+
+      <!-- Axes -->
+      <line x1="60" y1="50" x2="60" y2="340" stroke="#94a3b8" stroke-width="1.5"/>
+      <line x1="60" y1="340" x2="690" y2="340" stroke="#94a3b8" stroke-width="1.5"/>
+      <line x1="690" y1="50" x2="690" y2="340" stroke="#94a3b8" stroke-width="1.5"/>
+
+      <!-- Left Y Axis Labels (Frequency) -->
+      <text x="50" y="55" font-family="Segoe UI, sans-serif" font-size="10" fill="#475569" text-anchor="end">20</text>
+      <text x="50" y="195.0" font-family="Segoe UI, sans-serif" font-size="10" fill="#475569" text-anchor="end">10</text>
+      <text x="50" y="340" font-family="Segoe UI, sans-serif" font-size="10" fill="#475569" text-anchor="end">0</text>
+      <text x="30" y="195.0" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#1e40af" transform="rotate(-90 30 195.0)" text-anchor="middle">Defect Frequency (Count)</text>
+
+      <!-- Right Y Axis Labels (Cumulative %) -->
+      <text x="700" y="55" font-family="Segoe UI, sans-serif" font-size="10" fill="#475569">100%</text>
+      <text x="700" y="195.0" font-family="Segoe UI, sans-serif" font-size="10" fill="#475569">50%</text>
+      <text x="700" y="340" font-family="Segoe UI, sans-serif" font-size="10" fill="#475569">0%</text>
+
+      <!-- Bars -->
+      <rect x="75.8" y="79.0" width="58.5" height="261.0" fill="#2563eb" rx="3" stroke="#1d4ed8" stroke-width="1"/><text x="105.0" y="73.0" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#0f172a" text-anchor="middle">18</text><rect x="165.8" y="166.0" width="58.5" height="174.0" fill="#2563eb" rx="3" stroke="#1d4ed8" stroke-width="1"/><text x="195.0" y="160.0" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#0f172a" text-anchor="middle">12</text><rect x="255.8" y="209.5" width="58.5" height="130.5" fill="#2563eb" rx="3" stroke="#1d4ed8" stroke-width="1"/><text x="285.0" y="203.5" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#0f172a" text-anchor="middle">9</text><rect x="345.8" y="267.5" width="58.5" height="72.5" fill="#2563eb" rx="3" stroke="#1d4ed8" stroke-width="1"/><text x="375.0" y="261.5" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#0f172a" text-anchor="middle">5</text><rect x="435.8" y="296.5" width="58.5" height="43.5" fill="#2563eb" rx="3" stroke="#1d4ed8" stroke-width="1"/><text x="465.0" y="290.5" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#0f172a" text-anchor="middle">3</text><rect x="525.8" y="311.0" width="58.5" height="29.0" fill="#2563eb" rx="3" stroke="#1d4ed8" stroke-width="1"/><text x="555.0" y="305.0" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#0f172a" text-anchor="middle">2</text><rect x="615.8" y="325.5" width="58.5" height="14.5" fill="#2563eb" rx="3" stroke="#1d4ed8" stroke-width="1"/><text x="645.0" y="319.5" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#0f172a" text-anchor="middle">1</text>
+
+      <!-- 80% Cutoff Line -->
+      <line x1="60" y1="108.0" x2="690" y2="108.0" stroke="#dc2626" stroke-dasharray="5,5" stroke-width="2"/><text x="695" y="112.0" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#dc2626">80% Cutoff</text>
+
+      <!-- Cumulative Line -->
+      <polyline points="105.0,235.6 195.0,166.0 285.0,113.8 375.0,84.8 465.0,67.4 555.0,55.8 645.0,50.0" fill="none" stroke="#dc2626" stroke-width="2.5"/>
+      <circle cx="105.0" cy="235.6" r="4" fill="#dc2626" stroke="#ffffff" stroke-width="2"/><text x="105.0" y="227.6" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#dc2626" text-anchor="middle">36%</text><circle cx="195.0" cy="166.0" r="4" fill="#dc2626" stroke="#ffffff" stroke-width="2"/><text x="195.0" y="158.0" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#dc2626" text-anchor="middle">60%</text><circle cx="285.0" cy="113.8" r="4" fill="#dc2626" stroke="#ffffff" stroke-width="2"/><text x="285.0" y="105.8" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#dc2626" text-anchor="middle">78%</text><circle cx="375.0" cy="84.8" r="4" fill="#dc2626" stroke="#ffffff" stroke-width="2"/><text x="375.0" y="76.8" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#dc2626" text-anchor="middle">88%</text><circle cx="465.0" cy="67.4" r="4" fill="#dc2626" stroke="#ffffff" stroke-width="2"/><text x="465.0" y="59.4" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#dc2626" text-anchor="middle">94%</text><circle cx="555.0" cy="55.8" r="4" fill="#dc2626" stroke="#ffffff" stroke-width="2"/><text x="555.0" y="47.8" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#dc2626" text-anchor="middle">98%</text><circle cx="645.0" cy="50.0" r="4" fill="#dc2626" stroke="#ffffff" stroke-width="2"/><text x="645.0" y="42.0" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#dc2626" text-anchor="middle">100%</text>
+
+      <!-- Category Labels -->
+      <text x="105.0" y="358.0" font-family="Segoe UI, sans-serif" font-size="11" fill="#334155" text-anchor="end" transform="rotate(-35 105.0 358.0)">Unnotified Stockouts</text><text x="195.0" y="358.0" font-family="Segoe UI, sans-serif" font-size="11" fill="#334155" text-anchor="end" transform="rotate(-35 195.0 358.0)">Low Contrast Visibility</text><text x="285.0" y="358.0" font-family="Segoe UI, sans-serif" font-size="11" fill="#334155" text-anchor="end" transform="rotate(-35 285.0 358.0)">Manual Count Drift</text><text x="375.0" y="358.0" font-family="Segoe UI, sans-serif" font-size="11" fill="#334155" text-anchor="end" transform="rotate(-35 375.0 358.0)">Keyboard Navigation Trap</text><text x="465.0" y="358.0" font-family="Segoe UI, sans-serif" font-size="11" fill="#334155" text-anchor="end" transform="rotate(-35 465.0 358.0)">Duplicate SKU Insertion</text><text x="555.0" y="358.0" font-family="Segoe UI, sans-serif" font-size="11" fill="#334155" text-anchor="end" transform="rotate(-35 555.0 358.0)">Turnover Calc Lag</text><text x="645.0" y="358.0" font-family="Segoe UI, sans-serif" font-size="11" fill="#334155" text-anchor="end" transform="rotate(-35 645.0 358.0)">Missing Specs Detail</text>
+    </svg>
